@@ -5,6 +5,8 @@
 #include "GameFramework/SpectatorPawn.h"
 #include "TestSpectatorPawn.generated.h"
 
+class ACameraActor;
+
 #pragma region TestSpectorPawn States
 
 class ATestSpectatorPawn;
@@ -16,11 +18,11 @@ namespace TestSpectatorPawn_State
 	{
 	public:
 
-		virtual void MoveForward( ATestSpectatorPawn* pawn, float Val ) = 0;
-		virtual void MoveRight( ATestSpectatorPawn* pawn, float Val ) = 0;
-		virtual void MoveUp_World( ATestSpectatorPawn* pawn, float Val ) = 0;
-		virtual void TurnAtRate( ATestSpectatorPawn* pawn, float Rate ) = 0;
-		virtual void LookUpAtRate( ATestSpectatorPawn* pawn, float Rate ) = 0;
+		virtual void MoveForward( ATestSpectatorPawn* Pawn, float Val ) = 0;
+		virtual void MoveRight( ATestSpectatorPawn* Pawn, float Val ) = 0;
+		virtual void MoveUp_World( ATestSpectatorPawn* Pawn, float Val ) = 0;
+		virtual void TurnAtRate( ATestSpectatorPawn* Pawn, float Rate ) = 0;
+		virtual void LookUpAtRate( ATestSpectatorPawn* Pawn, float Rate ) = 0;
 
 	};
 
@@ -29,17 +31,17 @@ namespace TestSpectatorPawn_State
 	{
 	public:
 
-		virtual void MoveForward( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void MoveRight( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void MoveUp_World( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void TurnAtRate( ATestSpectatorPawn* pawn, float Rate ) override;
-		virtual void LookUpAtRate( ATestSpectatorPawn* pawn, float Rate ) override;
+		virtual void MoveForward( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void MoveRight( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void MoveUp_World( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void TurnAtRate( ATestSpectatorPawn* Pawn, float Rate ) override;
+		virtual void LookUpAtRate( ATestSpectatorPawn* Pawn, float Rate ) override;
 
-		static TestSpectatorPawn_State::Base* EnterState();
+		static void EnterState( ATestSpectatorPawn* Pawn );
 
 	private:
 
-		static FirstPersonFlying singleton;
+		static FirstPersonFlying Singleton;
 
 		FirstPersonFlying() {};
 
@@ -52,17 +54,17 @@ namespace TestSpectatorPawn_State
 	{
 	public:
 
-		virtual void MoveForward( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void MoveRight( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void MoveUp_World( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void TurnAtRate( ATestSpectatorPawn* pawn, float Rate ) override;
-		virtual void LookUpAtRate( ATestSpectatorPawn* pawn, float Rate ) override;
+		virtual void MoveForward( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void MoveRight( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void MoveUp_World( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void TurnAtRate( ATestSpectatorPawn* Pawn, float Rate ) override;
+		virtual void LookUpAtRate( ATestSpectatorPawn* Pawn, float Rate ) override;
 
-		static TestSpectatorPawn_State::Base* EnterState();
+		static void EnterState( ATestSpectatorPawn* Pawn );
 
 	private:
 
-		static FirstPersonOrbit singleton;
+		static FirstPersonOrbit Singleton;
 
 		FirstPersonOrbit() {};
 
@@ -73,17 +75,19 @@ namespace TestSpectatorPawn_State
 
 	class TopDownUnAttached : public TestSpectatorPawn_State::Base
 	{
-		virtual void MoveForward( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void MoveRight( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void MoveUp_World( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void TurnAtRate( ATestSpectatorPawn* pawn, float Rate ) override;
-		virtual void LookUpAtRate( ATestSpectatorPawn* pawn, float Rate ) override;
+	public:
 
-		static TestSpectatorPawn_State::Base* EnterState();
+		virtual void MoveForward( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void MoveRight( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void MoveUp_World( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void TurnAtRate( ATestSpectatorPawn* Pawn, float Rate ) override;
+		virtual void LookUpAtRate( ATestSpectatorPawn* Pawn, float Rate ) override;
+
+		static void EnterState( ATestSpectatorPawn* Pawn );
 
 	private:
 
-		static TopDownUnAttached singleton;
+		static TopDownUnAttached Singleton;
 
 		TopDownUnAttached() {};
 
@@ -94,17 +98,19 @@ namespace TestSpectatorPawn_State
 
 	class TopDownAttached : public TestSpectatorPawn_State::Base
 	{
-		virtual void MoveForward( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void MoveRight( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void MoveUp_World( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void TurnAtRate( ATestSpectatorPawn* pawn, float Rate ) override;
-		virtual void LookUpAtRate( ATestSpectatorPawn* pawn, float Rate ) override;
+	public:
 
-		static TestSpectatorPawn_State::Base* EnterState();
+		virtual void MoveForward( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void MoveRight( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void MoveUp_World( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void TurnAtRate( ATestSpectatorPawn* Pawn, float Rate ) override;
+		virtual void LookUpAtRate( ATestSpectatorPawn* Pawn, float Rate ) override;
+
+		static void EnterState( ATestSpectatorPawn* Pawn );
 
 	private:
 
-		static TopDownAttached singleton;
+		static TopDownAttached Singleton;
 
 		TopDownAttached() {};
 
@@ -117,17 +123,17 @@ namespace TestSpectatorPawn_State
 	{
 	public:
 
-		virtual void MoveForward( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void MoveRight( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void MoveUp_World( ATestSpectatorPawn* pawn, float Val ) override;
-		virtual void TurnAtRate( ATestSpectatorPawn* pawn, float Rate ) override;
-		virtual void LookUpAtRate( ATestSpectatorPawn* pawn, float Rate ) override;
+		virtual void MoveForward( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void MoveRight( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void MoveUp_World( ATestSpectatorPawn* Pawn, float Val ) override;
+		virtual void TurnAtRate( ATestSpectatorPawn* Pawn, float Rate ) override;
+		virtual void LookUpAtRate( ATestSpectatorPawn* Pawn, float Rate ) override;
 
-		static TestSpectatorPawn_State::Base* EnterState();
+		static void EnterState( ATestSpectatorPawn* Pawn );
 
 	private:
 
-		static Locked singleton;
+		static Locked Singleton;
 
 		Locked() {};
 
@@ -150,33 +156,50 @@ public:
 
 	ATestSpectatorPawn( const FObjectInitializer& ObjectInitializer);
 
+	virtual void BeginPlay() override;
 	virtual void Tick( float DeltaSeconds ) override; 
 
-	//-----------------------------------------------------------------------------------------------
+	void InitializeCameras();
+	
 	virtual void MoveForward( float Val ) override;
 	virtual void MoveRight( float Val ) override;
 	virtual void MoveUp_World( float Val ) override;
 	void TurnAtRate( float Rate );
 	void LookUpAtRate( float Rate );
 
-	void SetState( class TestSpectatorPawn_State::Base* const newState );
+	void OnEnterFirstPersonView();
+	void OnEnterTopDownView();
 
-	FORCEINLINE class UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
-	FORCEINLINE class UCameraComponent* GetTopDownCameraComponent()		const { return TopDownCameraComponent; }
+	FORCEINLINE void SetState( class TestSpectatorPawn_State::Base* const NewState );
+	FORCEINLINE class TestSpectatorPawn_State::Base const* const GetCurrentState() const;
+
+	FORCEINLINE ACameraActor* GetFirstPersonCameraActor() const; 
+	FORCEINLINE ACameraActor* GetTopDownCameraActor() const;
+	void MovePawnToTopDownCameraZPosition();
 
 	/** First person camera */
 	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = ( AllowPrivateAccess = "true" ) )
-	class UCameraComponent* FirstPersonCameraComponent;
+	class UChildActorComponent* FirstPersonCameraComponent;
 
 	/** Top down camera */
 	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = ( AllowPrivateAccess = "true" ) )
-	class UCameraComponent* TopDownCameraComponent;
+	class UChildActorComponent* TopDownCameraComponent;
+
+	/** Rotation of the TopDown Camera. */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = "Camera" )
+	FRotator TopDownCameraRotation;
+	
+	/** Starting Z-Location of Top Down Camera */
+	UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Camera )
+	float InitialTopDownCameraWorldZLocation;
 
 	/** If we're in orbit mode, the target we're orbiting*/
-	TWeakPtr< AActor > CurrentOrbitTarget;
+	UPROPERTY()
+	TWeakObjectPtr< AActor > CurrentOrbitTarget;
 
 	/** Cached distance to orbit target, will need to re-compute if zoom-level is changed. */
-	FVector			   DistanceToOrbitTarget;
+	UPROPERTY()
+	FVector DistanceToOrbitTarget;
 
 protected:
 
@@ -184,7 +207,37 @@ protected:
 
 private:
 
-	class TestSpectatorPawn_State::Base* currentState;
+	class TestSpectatorPawn_State::Base* CurrentState;
 };
 
+//-----------------------------------------------------------------------------------------------
+FORCEINLINE void ATestSpectatorPawn::SetState( class TestSpectatorPawn_State::Base* const NewState )
+{
+	CurrentState = NewState;
+}
 
+//-----------------------------------------------------------------------------------------------
+FORCEINLINE TestSpectatorPawn_State::Base const* const ATestSpectatorPawn::GetCurrentState() const
+{
+	return CurrentState;
+}
+
+//-----------------------------------------------------------------------------------------------
+FORCEINLINE ACameraActor* ATestSpectatorPawn::GetFirstPersonCameraActor() const
+{
+	ACameraActor* result = nullptr;
+
+	result = Cast< ACameraActor >( FirstPersonCameraComponent->ChildActor );
+
+	return result;
+}
+
+//-----------------------------------------------------------------------------------------------
+FORCEINLINE ACameraActor* ATestSpectatorPawn::GetTopDownCameraActor() const
+{
+	ACameraActor* result = nullptr;
+
+	result = Cast< ACameraActor >( TopDownCameraComponent->ChildActor );
+
+	return result;
+}
